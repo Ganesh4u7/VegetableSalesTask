@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table">
+     <thead>
+      <tr>
+        <th>Street Name</th>
+        <th>Best Sold Vegetable</th>
+        <th>Quantity</th>
+      </tr>
+     </thead>
+      <tbody>
+      <tr *ngFor="let sale of salesAnalysis;">
+      <td>{{sale.streetName}}</td>
+      <td>{{sale.vegetable}}</td>
+      <td>{{sale.amount}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Vegetable</th>
+        <th>Sold</th>
+        <th>Left</th>
+        <th>Bought price</th>
+        <th>Price Made</th>
+        <th>Profit/Loss</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let sale of salesDetails;">
+        <td>{{sale.name}}</td>
+        <td>{{sale.sold}}</td>
+        <td>{{sale.left}}</td>
+        <td>{{sale.boughtPrice}}</td>
+        <td>{{sale.priceMade}}</td>
+        <td *ngIf="sale.boughtPrice > sale.priceMade;" >
+          {{sale.boughtPrice - sale.priceMade}} Loss
+        </td>
+          <td *ngIf="sale.boughtPrice < sale.priceMade;" >
+            {{sale.priceMade - sale.boughtPrice}} Profit
+          </td>
+
+
+
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+

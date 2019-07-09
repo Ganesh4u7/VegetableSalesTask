@@ -1,0 +1,27 @@
+<div class="row" xmlns="">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    Suggestion:
+    <textarea class="form-control" rows="5" id="comment" type=""
+              id="message"
+              class="form-control"
+              name="message"
+              ngModel
+              required
+    ></textarea>
+    Date:
+    <input type="date" class="form-control"
+
+           id="date"
+           class="form-control"
+           name="date"
+           ngModel
+           required>
+      <button
+        class="btn btn-success"
+        type="submit"
+        [disabled]="!f.valid">Submit</button>
+    </form>
+  </div>
+</div>
+

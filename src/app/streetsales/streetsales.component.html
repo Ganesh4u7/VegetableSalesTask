@@ -1,0 +1,93 @@
+<div class="row" >
+  <div class="col-xs-12">
+    <form  #f="ngForm">
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label for="street">Street Name</label>
+          <input
+            type="text"
+            id="street"
+            class="form-control"
+            name="street"
+            ngModel
+            required
+          >
+        </div>
+          <div class="col-sm-4 form-group">
+            <label for="locality">Locality</label>
+            <input
+              type="text"
+              id="locality"
+              class="form-control"
+              name="locality"
+              ngModel
+              required
+            >
+          </div>
+      </div>
+    </form>
+    <form #f1="ngForm">
+      <div class="row">
+        <table>
+        <div class="col-sm-4 form-group">
+             <label for="type">Select Vegetable &nbsp; </label>
+             <select class="form-control" id="type" name="name" ngModel >
+               <option *ngFor="let vegetable of availableVegitables; let i = index;">{{vegetable.name}}({{vegetable.amount}}) </option>
+             </select>
+         </div>
+        <div class="col-sm-4 form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number"
+                 id="quantity"
+                 class="form-control"
+                 name="quantity"
+                 ngModel
+                 required>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="amount">Amount</label>
+          <input type="number"
+                 id="amount"
+                 class="form-control"
+                 name="amount"
+                 ngModel
+                 required
+                 >
+
+        </div>
+          <div class="col-sm-3 form-group">
+            <label></label>
+            <button class="btn btn-primary" (click)="add(f1)" [disabled]="!f1.valid">Add</button>
+          </div>
+        </table>
+      </div>
+      <div class="container" >
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Vegetable Name</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor=" let vegetable of saledetails; let i = index">
+            <td>{{vegetable.vegetable}}</td>
+            <td>{{vegetable.quantity}}</td>
+            <td>{{vegetable.amount}} </td>
+          </tr>
+          <!--<tr>-->
+            <!--<td></td>-->
+            <!--<td>Todays Expenditure :</td>-->
+            <!--<td>{{TotalCost}}</td>-->
+          <!--</tr>-->
+          </tbody>
+        </table>
+      </div>
+      &nbsp;&nbsp;
+      <div class="row">
+        <button class="btn btn-success"  (click)=Submit(f) [disabled]="!f.valid">Save Sale</button>
+      </div>
+    </form>
+  </div>
+</div>

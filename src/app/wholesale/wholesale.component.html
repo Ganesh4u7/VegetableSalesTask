@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Vegetable Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            ngModel
+            required
+          >
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Quantity</label>
+          <input
+            type="number"
+            id="amount"
+            class="form-control"
+            name="amount"
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
+          >
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Cost</label>
+          <input
+            type="number"
+            id="cost"
+            class="form-control"
+            name="cost"
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$"
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add' }}</button>
+          <button
+            class="btn btn-danger"
+            type="button"
+            (click)="onDelete()"
+            *ngIf="editMode">Delete</button>
+          <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+        </div>
+        <hr>
+        <!--<ul class="list-group">-->
+          <!--<a-->
+            <!--class="list-group-item"-->
+            <!--style="cursor: pointer"-->
+            <!--*ngFor="let vegetable of Vegetables; let i = index"-->
+            <!--(click)="onEditItem(i)"-->
+          <!--&gt;-->
+            <!--{{ vegetable.name }} ({{ vegetable.amount }}) = {{vegetable.cost}}-->
+          <!--</a>-->
+        <!--</ul>-->
+        <div class="container">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Vegetable Name</th>
+              <th>Quantity</th>
+              <th>Cost</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor=" let vegetable of Vegetables; let i = index;"
+                (click)="onEditItem(i)">
+              <td>{{vegetable.name}}</td>
+              <td>{{vegetable.amount}}</td>
+              <td>{{vegetable.cost}} </td>
+            </tr>
+            <tr>
+            <td></td>
+            <th>Todays Expenditure :</th>
+            <td>{{TotalCost}}</td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+              <th>Suggesion of the Day:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{suggestion}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
